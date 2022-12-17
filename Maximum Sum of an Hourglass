@@ -1,0 +1,44 @@
+class Solution:
+    def maxSum(self, grid: List[List[int]]) -> int:
+        if len(grid)<3 or len(grid[0])<3:
+            return 0
+        def hourglass_sum_of_3x3(mat):
+            sum_=0
+            for row in mat:
+                for num in row:
+                    sum_+=num
+            sum_-=mat[1][0]+mat[1][2]
+            return sum_
+        def cut_matrix(mat,start_row,end_row,start_col,end_col):
+            mat_rows=mat[start_row:end_row]
+            final=[]
+            for row in mat_rows:
+                final.append(row[start_col:end_col])
+            return final
+        row =len(grid)
+        col=len(grid[0])
+        start_row=0
+        
+        max_sum=0
+        
+        for end_row in range(row):
+            if end_row -start_row +1==3:
+                end_col=0
+                start_col=0
+                while end_col <col: 
+                    if end_col - start_col+1==3:
+                        mat_3x3=cut_matrix(grid,start_row,end_row+1,start_col,end_col+1)
+                        curr_sum=hourglass_sum_of_3x3(mat_3x3)
+                        if curr_sum>max_sum:
+                            max_sum=curr_sum 
+                        start_col+=1
+                    end_col+=1
+            
+                start_row+=1
+
+        return max_sum
+            
+
+
+
+                
