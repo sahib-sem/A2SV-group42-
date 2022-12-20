@@ -1,0 +1,13 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+K=int(input())
+room_numbers=input()
+room_numbers=room_numbers .split(" ")
+counter={}
+for room in room_numbers:
+    if counter.get(room):
+        counter[room]+=1
+    else:
+        counter[room]=1
+for room_num,count in counter.items():
+    if count==1:
+        print(room_num)
