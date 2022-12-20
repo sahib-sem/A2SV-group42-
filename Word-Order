@@ -1,0 +1,14 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+number=int(input())
+word_dict={}
+for word in range(number):
+    word=input()
+    # word_dict[word]=word_dict.get(word)+1
+    if word_dict.get(word):
+        word_dict[word]+=1
+    else:
+        word_dict[word]=1
+result=""+str(len(word_dict))+"\n"
+for res in word_dict.values():
+    result+=str(res)+ " "
+print(result)
