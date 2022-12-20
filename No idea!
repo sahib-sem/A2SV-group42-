@@ -1,0 +1,15 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+integer_m_and_n=input().split()
+m=int(integer_m_and_n[0])
+n=int(integer_m_and_n[1])
+array=input().split()
+A=set(input().split())
+B=set(input().split())
+happinese=0
+for num in array:
+    if num in A:
+        happinese+=1
+    elif num in B:
+        happinese-=1
+print(happinese)
+        
