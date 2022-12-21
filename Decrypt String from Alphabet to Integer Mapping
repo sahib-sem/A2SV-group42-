@@ -1,0 +1,29 @@
+class Solution:
+    def freqAlphabets(self, s: str) -> str:
+        end=len(s)-1
+        mapping={}
+        for i in range(1,27):
+            if i<10:
+                mapping[str(i)]=chr(64+i)
+            else:
+                mapping[str(i) +"#"]=chr(64+i)
+        rev_arr=[]
+        while end>=0:
+            temp=""
+            if s[end]=="#":
+                temp+=s[end-2]
+                temp+=s[end-1]
+                temp+=s[end]
+                end=end-3
+                rev_arr.append(mapping[temp])
+                
+            else:
+                rev_arr.append(mapping[s[end]])
+                end-=1
+        res_arr=rev_arr[::-1]
+        res=""
+        for chr_ in res_arr:
+            res+=chr_
+        return res.lower()
+
+
