@@ -1,0 +1,12 @@
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        s_dict=dict(Counter(s))
+        t_dict=dict(Counter(t))
+        if s_dict:
+            for t_chr in t_dict.keys():
+                if s_dict.get(t_chr) and t_dict[t_chr]==s_dict[t_chr]:
+                    continue
+                else:
+                    return t_chr
+        else:
+            return t
