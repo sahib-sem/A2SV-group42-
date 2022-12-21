@@ -1,0 +1,27 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+test_cases=int(input())
+
+for i in range(test_cases):
+    curr_largest=float("inf")
+    block_num=int(input())
+    cubes=list(map(int,input().split()))
+    i,j=0,block_num-1
+    while j>i:
+        if cubes[j]>=cubes[i]:
+            if curr_largest>=cubes[j]:
+                curr_largest=cubes[j]
+                j-=1
+            else:
+                print("No")
+                break
+        else:
+            
+            if curr_largest>=cubes[i]:
+                curr_largest=cubes[i]
+                i+=1
+            else:
+                print("No")
+                break
+        if i==j:
+            print("Yes")
+    
