@@ -1,0 +1,35 @@
+class Solution:
+
+    def nearestValidPoint(self, x: int, y: int, points: List[List[int]]) -> int:
+        valid_points=[]
+        # find valid points from points and append them to valid_points
+        for x_point,y_point in points:
+            if x_point==x:
+                valid_points.append([x_point,y_point])
+                continue
+            elif y_point==y:
+                valid_points.append([x_point,y_point])
+                continue
+
+        min_dis=float("inf")
+        result_points=[]
+        #find distance with the smallest manhattan distance and save it to result_points
+        for point in valid_points:
+            x_val,y_val=point
+            curr_dis=abs(x_val-x)+abs(y_val-y)
+            if curr_dis<min_dis:
+                result_points=[x_val,y_val]
+                min_dis=curr_dis
+        print(result_points)
+        if result_points:
+            return points.index(result_points)
+        else:
+            return -1
+
+
+
+
+       
+
+        
+            
