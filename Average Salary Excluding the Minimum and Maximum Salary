@@ -1,0 +1,7 @@
+class Solution:
+    def average(self, salary: List[int]) -> float:
+        salary.sort()
+        total_sum=sum(salary)
+        total_sum_after=total_sum-salary[0]-salary[-1]
+        average=total_sum_after/(len(salary)-2)
+        return round(average,5)
