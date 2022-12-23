@@ -1,0 +1,22 @@
+class Solution:
+    def similarPairs(self, words: List[str]) -> int:
+        dic={}
+        for (index,word) in enumerate(words):
+            dic[index]=set(Counter(word).keys())
+    
+        list_values=[value for value in dic.values()]
+        num_pairs=0
+        first_pointer=0
+        while first_pointer<len(list_values)-1:
+            second_pointer=first_pointer+1
+            while second_pointer<len(list_values):
+                if list_values[first_pointer]==list_values[second_pointer]:
+                    num_pairs+=1
+                second_pointer+=1
+            first_pointer+=1
+        return num_pairs
+            
+
+
+
+        
