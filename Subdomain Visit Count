@@ -1,0 +1,16 @@
+class Solution:
+    def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
+        count_pair={}
+        for cpdomain in cpdomains:
+            count,domain=cpdomain.split()[0],cpdomain.split()[1]
+            subdomain=domain.split(".")
+            for i in range(len(subdomain)):
+                curr_domain=".".join(subdomain[i:])
+                if count_pair.get(curr_domain):
+                    count_pair[curr_domain]+=int(count)
+                else:
+                    count_pair[curr_domain]=int(count)
+        result=[]
+        for key in count_pair.keys():
+            result.append(str(count_pair[key]) + " " + key)
+        return result
