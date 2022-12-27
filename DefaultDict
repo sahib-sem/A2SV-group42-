@@ -1,0 +1,21 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import defaultdict
+
+num=list(map(int,input().split()))
+group_A=[]
+group_B=[]
+for i in range(num[0]):
+    group_A.append(input())
+for i in range(num[1]):
+    group_B.append(input())
+
+for num in group_B:
+    res_lst=[]
+    for index,ele in enumerate(group_A):
+        if num==ele:
+            res_lst.append(index+1)
+    if res_lst:
+        print(" ".join(map(str,res_lst)))
+    else:
+        print(-1)
+        
