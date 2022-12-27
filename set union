@@ -1,0 +1,6 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+a=int(input())
+set_a_students=set([int(c) for c in input().split()])
+b=int(input())
+set_b_students=set([int(c) for c in input().split()])
+print(len(set_a_students.union(set_b_students)))
