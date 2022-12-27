@@ -1,0 +1,12 @@
+class Solution:
+    def gcd(self,a,b):
+        r=a%b
+        while r:
+            a=b
+            b=r
+            r=a%b
+        return b
+    def smallestEvenMultiple(self, n: int) -> int:
+        gcd=self.gcd(n,2)
+        lcm=(n*2)//gcd
+        return lcm
