@@ -1,0 +1,11 @@
+class Solution:
+    def countPairs(self, deliciousness: List[int]) -> int:
+        total=0
+        mod=10**9 + 7
+        count_num=Counter(deliciousness)
+        for num in deliciousness: #num=1
+            count_num[num]-=1
+            for power in range(0,22):
+                curr_num=(2**power)-num
+                total+=count_num.get(curr_num,0)
+        return total%mod
