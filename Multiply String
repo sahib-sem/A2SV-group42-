@@ -1,0 +1,14 @@
+class Solution:
+    def str_to_int(self,num_str):
+        length=len(num_str)-1
+        num_int=0
+        i=0
+        while length>=0:
+            num_int+=int(num_str[i])*(10**length)
+            length-=1
+            i+=1
+        return num_int
+    def multiply(self, num1: str, num2: str) -> str:
+        a=self.str_to_int(num1)
+        b=self.str_to_int(num2)
+        return str(a*b)
