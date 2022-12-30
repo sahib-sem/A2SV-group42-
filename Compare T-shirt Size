@@ -1,0 +1,43 @@
+n=int(input())
+degree={"s":0,"m":1,"l":2}
+def count_x(string):
+    length=len(string)
+    start=0
+    count=0
+    while start<length-1:
+        count+=1
+        start+=1
+    return count
+for i in range(n):
+    T_shirts=input().split()
+    a=T_shirts[0].lower()
+    b=T_shirts[1].lower()
+    size_a=a[-1]
+    size_b=b[-1]
+    if degree[size_a]>degree[size_b]:
+        print(">")
+    elif degree[size_a]<degree[size_b]:
+        print("<")
+    else:
+        a_count=count_x(a)
+        b_count=count_x(b)
+        if size_a=="m":
+            print("=")
+        
+        elif size_a=="s":
+            if a_count>b_count:
+                print("<")
+            elif a_count<b_count:
+                print(">")
+            else:
+                print("=")
+        else:
+            if a_count>b_count:
+                print(">")
+            elif a_count<b_count:
+                print("<")
+            else:
+                print("=")
+    
+    
+    
