@@ -1,0 +1,23 @@
+
+n=int(input())
+for j in range(n):
+    length=int(input())
+    numbers=input().split()
+    letters=list(input())
+    dic={}
+    for num in numbers:
+        dic[num]=set()
+    i=0
+    while i <length:
+        dic[numbers[i]].add(letters[i])
+        i+=1
+    flag=True 
+    for value in dic.values():
+        if len(value)>1:
+           flag=False
+    if flag:
+        print("YES")
+    else:
+        print("NO")
+        
+ 
