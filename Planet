@@ -1,0 +1,17 @@
+from collections import Counter
+n=int(input())
+for _ in range(n):
+    damage=0
+    first=input().split()
+    second=input().split()
+    c=int(first[1])
+    second_count=Counter(second)
+  
+    for val in second_count.values():
+        if c>val:
+            damage+=val
+        else:
+            damage+=c
+    print(damage)
+    
+    
