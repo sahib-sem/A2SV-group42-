@@ -1,0 +1,26 @@
+class Solution:
+    def onesMinusZeros(self, grid: List[List[int]]) -> List[List[int]]:
+        m=len(grid)
+        n=len(grid[0])
+        onesRow=[]
+        zerosRow=[]
+        for i in range(m):
+            curr_row=dict(Counter(grid[i]))
+            onesRow.append(curr_row.get(1,0))
+            zerosRow.append(curr_row.get(0,0))
+        onesCol=[]
+        zerosCol=[]
+        for c in range(n):
+            curr_col=[]
+            for r in range(m):
+                curr_col.append(grid[r][c])
+            curr_col_count=Counter(curr_col)
+            onesCol.append(curr_col_count.get(1,0))
+            zerosCol.append(curr_col_count.get(0,0))
+        diff=[[0 for _ in range(n)] for _ in range(m)] 
+        
+        for i in range(m):
+            for j in range(n):
+
+                diff[i][j] = onesRow[i] + onesCol[j] - zerosRow[i] - zerosCol[j]
+        return diff
