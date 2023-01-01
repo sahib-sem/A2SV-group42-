@@ -1,0 +1,22 @@
+class Solution:
+    def sumEvenAfterQueries(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        res=[]
+        curr_even_sum=0
+        for n in nums:
+            if n%2==0:
+                curr_even_sum+=n
+        res=[]
+        for val,index in queries:
+            if nums[index]%2==0:
+                if val%2==0:
+                    curr_even_sum+=val
+                else:
+                    curr_even_sum-=nums[index]
+            else:        
+                num=nums[index]+val
+                if num%2==0:
+                    curr_even_sum+=num
+            nums[index]+=val
+            res.append(curr_even_sum)
+        return res
+            
