@@ -1,0 +1,13 @@
+class Solution:
+    def addSpaces(self, s: str, spaces: List[int]) -> str:
+        res=""
+        i=0
+        for idx,char in enumerate(s):
+            curr=spaces[i]
+            if idx!=curr:
+                res+=char
+            else:
+                res+=" " + char
+                if i<len(spaces)-1:
+                    i+=1
+        return res
