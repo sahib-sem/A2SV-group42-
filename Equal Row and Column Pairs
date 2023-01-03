@@ -1,0 +1,21 @@
+
+class Solution:
+    def transpose(self,mat):
+        col=len(mat[0])
+        row=len(mat)
+        trans=[]
+        for c in range(col):
+            item=[]
+            for r in range(row):
+                item.append(mat[r][c])
+            trans.append(item)
+        return trans
+    def equalPairs(self, grid: List[List[int]]) -> int:
+        transpose=self.transpose(grid)
+        res=0
+        print(transpose)
+        for row in grid:
+            for col in transpose:
+                if row==col:
+                    res+=1
+        return res
