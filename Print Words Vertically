@@ -1,0 +1,20 @@
+class Solution:
+    def printVertically(self, s: str) -> List[str]:
+        lst=s.split()
+        max_length=0
+        for item in lst:
+            if len(item)>max_length:
+                max_length=len(item)
+        n=len(lst)
+        new_lst=[]
+        for string in lst:
+            while len(string)<max_length:
+                string+=" "
+            new_lst.append(string)
+        res=[]
+        for col in range(max_length):
+            temp=''
+            for row in range(n):
+                temp+=new_lst[row][col]
+            res.append(temp.rstrip())
+        return res
