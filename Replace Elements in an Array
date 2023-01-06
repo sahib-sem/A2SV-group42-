@@ -1,0 +1,13 @@
+class Solution:
+    def arrayChange(self, nums: List[int], operations: List[List[int]]) -> List[int]:
+        dic={v:i for i,v in enumerate(nums)}
+        
+        for num1,num2 in operations:
+            val=dic[num1]
+            del dic[num1]
+            dic[num2]=val
+        for num,index in dic.items():
+
+            nums[index]=num
+        return nums
+        
