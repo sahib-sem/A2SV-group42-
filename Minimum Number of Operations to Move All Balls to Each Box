@@ -1,0 +1,14 @@
+class Solution:
+    def minOperations(self, boxes: str) -> List[int]:
+        dic={}
+        for i,bit in enumerate(boxes):
+            if int(bit):
+                dic[i]=bit
+        answer=[0]*len(boxes)
+        for i in range(len(answer)):
+            count=0
+            for key in dic.keys():
+                if key!=i:
+                    count+=abs(i-key)
+            answer[i]=count
+        return answer
