@@ -1,0 +1,32 @@
+class Solution:
+    def removeComments(self, source: List[str]) -> List[str]:
+        result=[]
+        start_comment=False #signal if we are have found our block comment starting point 
+        buffer=''
+           
+        for item in source:
+            start=0  
+            while start<len(item):
+               
+
+                if start< len(item)-1 and item[start]=="/" and item[start+1]=='/' and not start_comment:
+                    start=len(item)
+                    
+                elif start< len(item)-1 and item[start]=="/" and item[start+1]=='*' and not start_comment:
+                    start_comment=True 
+                    start+=1
+                elif start< len(item)-1 and item[start]=="*" and item[start+1]=='/' and start_comment:
+                    start_comment=False
+                    start+=1
+                elif not start_comment:
+                    buffer+=item[start]
+                start+=1
+            if buffer and not start_comment:
+                result.append(buffer)
+                buffer=''
+        return result
+                    
+
+            
+        return result
+                    
