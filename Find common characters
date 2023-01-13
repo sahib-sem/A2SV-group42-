@@ -1,0 +1,22 @@
+class Solution:
+    def commonChars(self, words: List[str]) -> List[str]:
+        container=[]
+        result=[]
+        for i in range(len(words)):
+            container.append([0 for i in range(26)])
+
+        offset=ord('a')
+
+        for i,word in enumerate(words):
+            for char in word:
+                index=ord(char)-offset
+                container[i][index]+=1
+        for i in range(26):
+            min_=container[0][i]
+            for count in container:
+                curr=count[i]
+                min_=min(min_,curr)
+            for j in range(min_):
+                result.append(chr(97+i))
+        return result
+            
