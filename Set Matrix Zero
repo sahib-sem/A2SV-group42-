@@ -1,0 +1,22 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        zero_position=[]
+        direction=[[0,1],[0,-1],[1,0],[-1,0]]
+        for row in range(len(matrix)):
+            for col in range(len(matrix[0])):
+                if matrix[row][col]==0:
+                    zero_position.append([row,col])
+        if zero_position:
+            for pos in zero_position:
+                for dire in direction:
+                    x,y=pos
+                    x0,y0=dire
+                    while 0<=x<len(matrix) and 0<=y<len(matrix[0]):
+                        matrix[x][y]=0
+                        x+=x0
+                        y+=y0
+        
+
