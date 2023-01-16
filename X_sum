@@ -1,0 +1,28 @@
+n=int(input())
+for i in range(n):
+    n,m=list(map(int,input().split()))
+    grid=[]
+    for j in range(n):
+        row=list(map(int,input().split()))
+        grid.append(row)
+
+    dic1={}
+    dic2={}
+    for r in range(n):
+        for c in range(m):
+            key1=r-c
+            key2=r+c
+            if dic1.get(key1):
+                dic1[key1]+=grid[r][c]
+            else:
+                dic1[key1]=grid[r][c]
+            if dic2.get(key2):
+                dic2[key2]+=grid[r][c]
+            else:
+                dic2[key2]=grid[r][c]
+    max_=0
+    for row in range(n):
+        for col in range(m):
+            curr=dic1[row-col]+dic2[row+col]-grid[row][col]
+            max_=max(max_,curr)
+    print(max_)
