@@ -1,0 +1,55 @@
+class Solution:
+    def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
+        row=len(grid)
+        col=len(grid[0])
+        count=0
+        for r in range(row-2):
+            for c in range(col-2):
+                if r+3 <=row and c+3 <=col:
+                    mat=[]
+                    for rr in range(r,r+3):
+                        rep=[]
+                        for cc in range(c,c+3):
+                            rep.append(grid[rr][cc])
+                        mat.append(rep)
+                            
+                    print(mat)
+                    const=sum(mat[0])
+                    is_magic=True
+                    #row check
+                    for i in range(3):
+                        if const!=sum(mat[i]):
+                            is_magic=False
+                    if not is_magic:
+                        continue
+                    #col check
+                    for j in range(3):
+                        temp=[]
+                        for i in range(3):
+                            temp.append(mat[i][j])
+                        if sum(temp)!=const:
+                            is_magic=False
+                    if not is_magic:
+                        continue
+                    #diagonal check
+                    right_diagonal=[mat[0][0],mat[1][1],mat[2][2]]
+                    left_diagonal=[mat[0][2],mat[1][1],mat[2][0]]
+                    if sum(right_diagonal)!=const:
+                        continue
+                    if sum(left_diagonal)!=const:
+                        continue
+                    #distinict_check
+                    val=mat[0][0]
+                    for rrr in range(3):
+                        for ccc in range(3):
+                            if (rrr!=0 or ccc!=0) and mat[rrr][ccc]==val:
+                                is_magic=False
+                            if mat[rrr][ccc]>9 or mat[rrr][ccc]<1:
+                                is_magic=False
+                
+                            
+                    if is_magic:
+                        count+=1
+
+        return count
+
