@@ -1,0 +1,36 @@
+class Solution(object):
+    def sortColors(self, nums):
+        def merge_sort(lst):
+            if len(lst)>1:
+                first_half=lst[:len(lst)//2]
+                merge_sort(first_half)
+                second_half=lst[len(lst)//2:]
+                merge_sort(second_half)
+                merge(first_half,second_half,lst)
+        def merge(list1,list2,temp):
+            curr1=0
+            curr2=0
+            curr3=0
+            while curr1<len(list1) and curr2<len(list2):
+                if list1[curr1]<=list2[curr2]:
+                    temp[curr3]=list1[curr1]
+                    curr1+=1
+                    curr3+=1
+                else:
+                    temp[curr3]=list2[curr2]
+                    curr2+=1
+                    curr3+=1
+            while curr1<len(list1):
+                temp[curr3] = list1[curr1]
+                curr1 += 1
+                curr3 += 1
+            while curr2<len(list2):
+                temp[curr3] = list2[curr2]
+                curr2 += 1
+                curr3 += 1
+        
+
+        merge_sort(nums)
+        return nums
+
+
