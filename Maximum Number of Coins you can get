@@ -1,0 +1,17 @@
+class Solution(object):
+    def maxCoins(self, piles):
+        """
+        :type piles: List[int]
+        :rtype: int
+        """
+        sum_=0
+        n=len(piles)
+        piles.sort()
+        bob=0
+        you=n-2
+        while bob < n//3 :
+            sum_+=piles[you]
+            you-=2
+            bob+=1
+        return sum_
+        
