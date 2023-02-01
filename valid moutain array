@@ -1,0 +1,20 @@
+class Solution:
+    def validMountainArray(self, arr: List[int]) -> bool:
+        if len(arr)<3:
+            return False
+        n=max(arr)
+        
+        i=arr.index(n)
+        
+        if i==0 or i==len(arr)-1:
+            return False
+
+        for j in range(i):
+            if arr[j]>=arr[j+1]:
+                return False
+        print("i",i)
+        for k in range(i,len(arr)-1):
+            if arr[k]<=arr[k+1]:
+                return False
+        
+        return True
