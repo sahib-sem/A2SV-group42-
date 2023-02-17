@@ -1,0 +1,24 @@
+n,m =list(map(int,input().split()))
+grid=[]
+for i in range(n):
+    grid.append(list(input()))
+ 
+directions=[[1,0],[0,1],[0,-1],[-1,0]]
+string=''
+for i in range(n):
+    for j in range(m):
+        char=grid[i][j]
+        unique=True
+        for dir in directions:
+            x,y =dir
+            x0,y0=i+x,j+y
+            while 0<=x0<n and 0<=y0<m:
+                curr=grid[x0][y0]
+                if curr==char:
+                    unique=False
+                    break
+                x0+=x
+                y0+=y
+        if unique:
+            string+=char
+print(string)
