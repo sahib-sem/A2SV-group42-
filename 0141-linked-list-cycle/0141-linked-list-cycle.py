@@ -6,14 +6,12 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        rabbit=head
-        tortoise=head
-        while tortoise and rabbit and rabbit.next:
-            tortoise=tortoise.next
-            rabbit=rabbit.next.next
-            if tortoise==rabbit:
+        hashset=set()
+        while head:
+            if not head in hashset:
+                hashset.add(head)
+            else:
                 return True
-            
-                
+            head=head.next
         return False
-        
+                
