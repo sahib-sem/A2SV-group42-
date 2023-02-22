@@ -1,0 +1,20 @@
+n,m=list(map(int,input().split()))
+first_arr=list(map(int,input().split()))
+second_arr=list(map(int,input().split()))
+i,j=0,0
+res=[]
+while i<n and j<m:
+    if first_arr[i]<second_arr[j]:
+        res.append(first_arr[i])
+        i+=1
+    else:
+        res.append(second_arr[j])
+        j+=1
+while i<n:
+    res.append(first_arr[i])
+    i+=1
+while j<m:
+    res.append(second_arr[j])
+    j+=1
+res=list(map(str,res))
+print(" ".join(res))
