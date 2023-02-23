@@ -4,11 +4,13 @@ class NumArray:
         self.arr = nums
         for i in range(1,len(self.arr)):
             self.arr[i] += self.arr[i-1]
-        self.arr.append(0)
         
 
     def sumRange(self, left: int, right: int) -> int:
-        return self.arr[right] - self.arr[left-1]
+        if not left:
+            return self.arr[right]
+        else:
+            return self.arr[right] - self.arr[left-1]
 
 
 # Your NumArray object will be instantiated and called as such:
