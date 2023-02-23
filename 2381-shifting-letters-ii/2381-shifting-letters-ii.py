@@ -19,10 +19,7 @@ class Solution:
             running_sum += lst[i]
             char = ord(s[i]) - 97
             char += running_sum 
-            while char < 0:
-                char += 26
-            while char > 25:
-                char -= 26
+            char %= 26
             
             ans += chr(char + 97)
         return ans
