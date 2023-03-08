@@ -9,10 +9,6 @@ class Solution:
         # two trees are equal if the left and right sub tree are equal
         if not p and not q:
             return True
-        if p and not q:
-            return False
-        if q and not p:
-            return False
         
         if p and q:
             if self.isSameTree(p.left , q.left) and self.isSameTree(p.right , q.right):
