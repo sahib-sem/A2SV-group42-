@@ -11,12 +11,14 @@ class Solution:
             if i >= len(nums):
                 return
             
+            backtracking(temp , i + 1)
+            
             if not temp or temp[-1] <=nums[i]:
                 temp.append(nums[i])
                 backtracking(temp , i + 1)
                 temp.pop()
                 
-            backtracking(temp , i + 1)
+            
            
         backtracking([] , 0)
         return self.ans
