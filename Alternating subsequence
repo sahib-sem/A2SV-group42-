@@ -1,0 +1,24 @@
+n=int(input())
+for i in range(n):
+    length=int(input())
+    lst=list(map(int,input().split()))
+ 
+    i = 0
+    j = 1
+    summ = 0
+    curr = lst[i] 
+    # True if positive flase otherwise
+    while j < length:
+        if lst[j] < 0 and curr < 0 and curr < lst[j]:
+            curr = lst[j] 
+        
+ 
+        elif lst[j] > 0 and curr > 0 and curr < lst[j]:
+            curr = lst[j]
+            
+        elif lst[j] > 0 and curr < 0 or lst[j] < 0 and curr > 0:
+            summ += curr
+            curr = lst[j]
+        j += 1
+    
+    print(summ + curr)
