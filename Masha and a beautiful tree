@@ -1,0 +1,35 @@
+t = int(input())
+ 
+def sort_lst(lst, count):
+    if len(lst) == 2:
+        
+        if lst[0] > lst[1]:
+            count += 1
+            return [[lst[1], lst[0]] , count]
+        else:
+            return [lst, count]
+    mid = len(lst) // 2
+    left , count  = sort_lst(lst[:mid] , count)
+    right , count = sort_lst(lst[mid:] , count)
+    
+    if right[0] < left[0]:
+        count += 1
+        
+        return [right + left , count]
+    else:
+        return [left + right, count]
+ 
+for i in range(t):
+    n = int(input())
+    lst = list(map(int, input().split()))
+    new = lst[:]
+    count = 0
+    if n == 1:
+        print(0)
+    else:
+        lst , count = sort_lst(lst , count)
+        
+        if sorted(new) == lst:
+            print(count)
+        else:
+            print(- 1)
