@@ -7,15 +7,15 @@ class Solution:
                 ans.append(temp[:])
                 return 
             
-            for i in nums:
-                if not i in visited:
-                    temp.append(i)
-                    visited.add(i)
+            for i in range(len(nums)):
+                if visited & (1 << i) == 0:
+                    temp.append(nums[i])
+                    visited |= 1 << i
                     backtracking(ans, visited , temp)
                     temp.pop()
-                    visited.remove(i)
+                    visited &= ~(1 << i)
         ans = []
-        visited = set()
+        visited = 0
         temp = []
         
         backtracking(ans , visited,  temp)
