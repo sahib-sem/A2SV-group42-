@@ -1,0 +1,14 @@
+n = int(input())
+
+grid = []
+
+for _ in range(n):
+    row = list(map(int, input().split()))
+    grid.append(row)
+
+edges = 0
+for r in range(n):
+    for c in range(n):
+        if grid[r][c]:
+            edges += 1
+print(edges // 2)
