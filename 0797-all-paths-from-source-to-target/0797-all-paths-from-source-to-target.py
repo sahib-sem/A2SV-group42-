@@ -1,20 +1,21 @@
 class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
-        ds = len(graph) - 1
-        stack = [[0,0]]
-        paths = []
         
-        while stack:
+        paths = []
+        ds = len(graph) - 1
+        
+        def dfs(curr, temp):
+            temp.append(curr)
             
-            current , neighbour = stack[-1]
+            if curr == ds:
+                paths.append(temp[:])
+                
+            for neighbour in graph[curr]:
+                dfs(neighbour , temp)
             
-            if current == ds and neighbour == 0:
-                paths.append(list(map(lambda x: x[0] , stack)))
-            
-            if neighbour < len(graph[current]):
-                stack[-1][1] += 1
-                stack.append([graph[current][neighbour] , 0])
-            else:
-                stack.pop()
+            temp.pop()
+        
+        dfs(0, [])
         
         return paths
+            
