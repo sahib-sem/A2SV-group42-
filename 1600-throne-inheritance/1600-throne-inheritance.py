@@ -20,24 +20,38 @@ class ThroneInheritance:
 
     def death(self, name: str) -> None:
         self.dead.add(name)
-
-    def getInheritanceOrder(self) -> List[str]:
-        stack = [self.king]
-        inheritance = []
+    
+    def dfs(self, node, inheritance):
+        if not node in self.dead:
+            inheritance.append(node)
         
-        while stack:
-            
-            current = stack.pop()
-            if current not in self.dead:
-                    inheritance.append(current)
-            temp = []
-            for child in self.graph[current]:
-                temp.append(child)
-                
-            temp = temp[::-1]
-            stack.extend(temp)
+        for child in self.graph[node]:
+            self.dfs(child, inheritance)
         
         return inheritance
+        
+    def getInheritanceOrder(self) -> List[str]:
+        
+        return self.dfs(self.king, [])
+        
+#         stack = [self.king]
+#         inheritance = []
+        
+#         while stack:
+            
+#             current = stack.pop()
+#             if current not in self.dead:
+#                     inheritance.append(current)
+#             temp = []
+#             for child in self.graph[current]:
+#                 temp.append(child)
+                
+#             temp = temp[::-1]
+#             stack.extend(temp)
+        
+#         return inheritance
+        
+            
             
         
         
