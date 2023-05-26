@@ -1,8 +1,16 @@
 class Solution:
-    @cache
+    
     def climbStairs(self, n: int) -> int:
-        if n == 1  or n == 2:
-            return n
-        return self.climbStairs(n - 1) + self.climbStairs(n - 2)
+        self.arr = {}
+        
+        def Dp(n):
+            if n <= 2:
+                return n
+            if n not in self.arr:
+                self.arr[n] = Dp(n- 1) + Dp(n- 2)
+            
+            return self.arr[n]
+        
+        return Dp(n)
         
         
