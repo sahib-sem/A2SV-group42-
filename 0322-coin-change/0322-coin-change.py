@@ -1,29 +1,33 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         
-        level = 0
-        queue = deque([0])
-        visited = set()
+        memo = {}
+        coins.sort(key = lambda x : -x)
+        self.ans = float('inf')
         
-        while queue:
+        def dp(rem_sum):
             
-            length = len(queue)
+            if rem_sum < 0:
+                return float('inf')
             
-            for i in range(length):
+            if rem_sum == 0:
+                return 0
+            if rem_sum in memo:
+                return memo[rem_sum]
+            
+            for coin in coins:
                 
-                curr = queue.popleft()
-                
-                if curr == amount:
-                    return level
-                
-                for coin in coins:
-                    if (coin + curr) not in visited and (coin + curr) <= amount:
-                        queue.append(coin + curr)
-                        visited.add(coin + curr)
-                
-            level += 1
-                    
+                needed_coins = 1 + dp(rem_sum - coin)
+                if rem_sum not in memo:
+                    memo[rem_sum] = needed_coins
+                else:
+                    memo[rem_sum] = min(memo[rem_sum], needed_coins)
+            
+            return memo[rem_sum]
         
-        return -1
+        ans = dp(amount)
+        
+        return -1 if ans == float('inf') else ans 
+           
                 
         
