@@ -4,8 +4,7 @@ class Solution:
         # let make a backtracking function 
         
         memo = {}
-        if len(s) == 1 and s == "0":
-            return 0
+        
         
         def dp(i):
             
